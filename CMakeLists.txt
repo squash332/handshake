@@ -32,7 +32,7 @@ FetchContent_MakeAvailable(googletest)
 # ---- Declare library ----
 add_library(
     handshake_lib OBJECT
-    source/lib.cpp
+    source/game.cpp
 )
 
 target_include_directories(

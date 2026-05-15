@@ -6,7 +6,7 @@ project(handshakeTests LANGUAGES CXX)
 
 # ---- Tests ----
 
-add_executable(handshake_test source/handshake_test.cpp)
+add_executable(handshake_test handshake_test.cpp)
 target_link_libraries(handshake_test PRIVATE handshake_lib)
 target_compile_features(handshake_test PRIVATE cxx_std_17)
 
