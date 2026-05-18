@@ -11,5 +11,5 @@ public:
 
   const char* name_;
 private:
-  
+
 };
