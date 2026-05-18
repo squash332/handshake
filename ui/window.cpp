@@ -1,0 +1,65 @@
+#include "window.hpp"
+#include <iostream>
+
+Window::Window()
+{
+  InitWindow(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, "Handshake");
+  SetTargetFPS(60);
+  target_ = LoadRenderTexture(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+}
+
+Window::~Window()
+{
+  UnloadRenderTexture(target_);
+  CloseWindow();
+}
+
+void Window::beginFrame()
+{
+  BeginTextureMode(target_);
+}
+
+void Window::endFrame()
+{
+  EndTextureMode();
+  BeginDrawing();
+  DrawTexturePro(
+      target_.texture,
+      Rectangle {0, 0, (float)VIRTUAL_WIDTH, -(float)VIRTUAL_HEIGHT},
+      Rectangle {0, 0, (float)GetScreenWidth(), (float)GetScreenHeight()},
+      Vector2 {0, 0},
+      0.0f,
+      WHITE);
+  EndDrawing();
+}
+
+bool Window::shouldClose()
+{
+  if (WindowShouldClose()) {
+    return true;
+  }
+  return false;
+}
+
+void Window::toggleFullscreen()
+{
+    if(fullscreen_) {
+        std::cout << "window is already fullscreen. returning" << std::endl;
+        return;
+    }
+  ToggleFullscreen();
+  int monitor = GetCurrentMonitor();
+  SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
+  fullscreen_ = true;
+}
+
+void Window::toggleWindowed()
+{
+    if(!fullscreen_) {
+        std::cout << "window is already in native windowed mode. returning" << std::endl;
+        return;
+    }
+    SetWindowSize(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+    fullscreen_ = false;
+    
+}

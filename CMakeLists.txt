@@ -32,9 +32,14 @@ FetchContent_MakeAvailable(googletest)
 # ---- Declare library ----
 add_library(
     handshake_lib OBJECT
+
+    source/keybinds.cpp
+    source/inputmanager.cpp
     source/game.cpp
+
     components/entity.cpp
     components/player.cpp
+    
     sprites/ja.png
     ui/window.cpp
 )
