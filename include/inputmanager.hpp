@@ -3,8 +3,6 @@
 #include <functional>
 #include <unordered_map>
 
-#include "common.hpp"
-#include "raylib.h"
 
 class InputManager
 {

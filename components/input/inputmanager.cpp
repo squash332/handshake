@@ -1,5 +1,7 @@
 #include "inputmanager.hpp"
 
+#include "raylib.h"
+
 void InputManager::bind(int key, std::function<void()> action) {
     keybinds_[key] = action;
 }

@@ -33,8 +33,8 @@ FetchContent_MakeAvailable(googletest)
 add_library(
     handshake_lib OBJECT
 
-    source/keybinds.cpp
-    source/inputmanager.cpp
+    components/input/keybinds.cpp
+    components/input/inputmanager.cpp
     source/game.cpp
 
     components/entity.cpp
@@ -49,6 +49,7 @@ target_include_directories(
     PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/ui/include>"
 )
 
 
