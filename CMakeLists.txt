@@ -33,13 +33,20 @@ FetchContent_MakeAvailable(googletest)
 add_library(
     handshake_lib OBJECT
     source/game.cpp
+    components/entity.cpp
+    components/player.cpp
+    sprites/ja.png
+    ui/window.cpp
 )
 
 target_include_directories(
     handshake_lib ${warning_guard}
     PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>"
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
 )
+
+
 
 target_compile_features(handshake_lib PUBLIC cxx_std_17)
 target_link_libraries(handshake_lib PUBLIC raylib)
