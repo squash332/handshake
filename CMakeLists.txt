@@ -34,14 +34,15 @@ add_library(
     handshake_lib OBJECT
 
     components/input/keybinds.cpp
-    components/input/inputmanager.cpp
+    components/input/input_manager.cpp
     source/game.cpp
 
     components/entity.cpp
     components/player.cpp
+    components/map.cpp
     
-    sprites/ja.png
     ui/window.cpp
+    ui/map_renderer.cpp
 )
 
 target_include_directories(

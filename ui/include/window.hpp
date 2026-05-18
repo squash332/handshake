@@ -1,9 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-
-constexpr int VIRTUAL_HEIGHT = 600;
-constexpr int VIRTUAL_WIDTH = 800;
+#include "constants.hpp"
 
 class Window
 {
