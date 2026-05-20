@@ -1,2 +1,11 @@
 CompileFlags:
-  CompilationDatabase: build/dev
+  CompilationDatabase: build
+  Add:
+    - -Iinclude
+    - -Iui/include
+    - -Icomponents
+    - -Icomponents/input
+
+  
+Diagnostics:
+  UnusedIncludes: None

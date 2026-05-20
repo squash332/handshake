@@ -1,4 +1,5 @@
 #include "map.hpp"
+#include "constants.hpp"
 
 bool Map::isWalkable(int x, int y)
 {
@@ -9,11 +10,11 @@ bool Map::isWalkable(int x, int y)
   return map_[y][x].walkable;
 }
 
-int Map::getCols()
+int Map::getCols() const
 {
   return VIRTUAL_WIDTH / TILE_SIZE;
 }
 
-int Map::getRows() {
+int Map::getRows() const {
   return VIRTUAL_HEIGHT / TILE_SIZE;
 }

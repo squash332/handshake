@@ -24,8 +24,8 @@ public:
     ~Map() = default;
     bool isWalkable(int x, int y);
     Tile getTile(int x, int y);
-    int getRows();
-    int getCols();
+    int getRows() const;
+    int getCols() const;
 
 private:
     std::vector<std::vector<Tile>> map_;
