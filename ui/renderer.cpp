@@ -18,8 +18,9 @@ Renderer::~Renderer()
 }
 
 void Renderer::drawPlayer(const Player& player) {
-    
+    DrawTexture(player_sprite_)
 }
+
 void Renderer::drawMap(const Map& map)
 {
   for (size_t y = 0; y < map.getRows(); y++) {

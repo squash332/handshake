@@ -9,7 +9,6 @@ Game::Game()
 {
   m_input = std::make_unique<InputManager>();
   m_game_window = std::make_unique<Window>();
-  filip = LoadTexture("sprites/ja.png");
   m_player = std::make_unique<Player>();
   m_map = std::make_unique<Map>(Map::createOffice());
   m_renderer = std::make_unique<Renderer>();
