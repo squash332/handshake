@@ -1,7 +1,6 @@
 #include "entity.hpp"
 
-Entity::Entity() {
-    health_ = 100;
+Entity::Entity(float x, float y): x_(x), y_(y), health_(100) {
     std::cout << "entity constructor ran" << std::endl;
 }
 

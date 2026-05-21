@@ -5,7 +5,7 @@
 class Entity
 {
 public:
-  Entity();
+  Entity(float, float);
   virtual ~Entity() = default;
 
   virtual void update() = 0;
