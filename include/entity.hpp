@@ -6,10 +6,16 @@ class Entity
 {
 public:
   Entity();
-  ~Entity();
+  virtual ~Entity() = default;
+
+  virtual void update() = 0;
+
+  float setPosition(int, int);
+  float getX() const;
+  float getY() const;
+
+protected:
   uint16_t health_;
-
   const char* name_;
-private:
-
+  float x_, y_;
 };

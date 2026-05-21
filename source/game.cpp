@@ -1,7 +1,9 @@
 #include <memory>
+
 #include "game.hpp"
+
 #include "map.hpp"
-#include "map_renderer.hpp"
+#include "renderer.hpp"
 
 Game::Game()
 {
@@ -10,19 +12,20 @@ Game::Game()
   filip = LoadTexture("sprites/ja.png");
   m_player = std::make_unique<Player>();
   m_map = std::make_unique<Map>(Map::createOffice());
-  m_map_renderer = std::make_unique<MapRenderer>(*m_map);
+  m_renderer = std::make_unique<Renderer>();
   registerKeybinds(*m_input, *m_game_window, *m_player);
 }
 
 void Game::run()
 {
   while (!m_game_window->shouldClose()) {
-    m_input->update();
+    m_input->update();  // our keybinds manager
 
-    m_game_window->beginFrame();
+    m_game_window->beginFrame();  // initiliaze render texture for drawing
+
     ClearBackground(LIGHTGRAY);
-    m_map_renderer->draw();
-    DrawTexture(filip, 0, 0, RAYWHITE);
-    m_game_window->endFrame();
+    m_renderer->drawMap(*m_map);
+
+    m_game_window->endFrame();  // end drawing
   }
 }

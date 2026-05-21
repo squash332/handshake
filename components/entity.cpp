@@ -5,6 +5,15 @@ Entity::Entity() {
     std::cout << "entity constructor ran" << std::endl;
 }
 
-Entity::~Entity() {
+float Entity::setPosition(int x, int y) {
+    x_ = x;
+    y_ = y;
+}
 
+float Entity::getX() const {
+    return x_;
+}
+
+float Entity::getY() const {
+    return y_;
 }

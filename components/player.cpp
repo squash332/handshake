@@ -1,5 +1,8 @@
 #include "player.hpp"
 
-Player::Player():Entity() {
-    std::cout << "player constructor ran" << std::endl;
+Player::Player()
+    : Entity()
+{
+  std::cout << "player constructor ran" << std::endl;
 }
+

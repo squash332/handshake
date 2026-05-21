@@ -42,7 +42,7 @@ add_library(
     components/map.cpp
     
     ui/window.cpp
-    ui/map_renderer.cpp
+    ui/renderer.cpp
 )
 
 target_include_directories(
