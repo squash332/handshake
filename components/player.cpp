@@ -6,3 +6,6 @@ Player::Player()
   std::cout << "player constructor ran" << std::endl;
 }
 
+void Player::update() {
+    
+}

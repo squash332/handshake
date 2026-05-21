@@ -5,7 +5,7 @@ Entity::Entity() {
     std::cout << "entity constructor ran" << std::endl;
 }
 
-float Entity::setPosition(int x, int y) {
+void Entity::setPosition(float x, float y) {
     x_ = x;
     y_ = y;
 }

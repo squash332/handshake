@@ -10,7 +10,7 @@ public:
 
   virtual void update() = 0;
 
-  float setPosition(int, int);
+  void setPosition(float, float);
   float getX() const;
   float getY() const;
 
