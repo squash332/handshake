@@ -16,3 +16,11 @@ float Entity::getX() const {
 float Entity::getY() const {
     return y_;
 }
+
+float Entity::getNextX() const {
+    return next_x_;
+}
+
+float Entity::getNextY() const {
+    return next_y_;
+}

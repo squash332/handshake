@@ -19,6 +19,13 @@ void Game::run()
 {
   while (!m_game_window->shouldClose()) {
     m_input->update();  // our keybinds manager
+    m_player->update();
+
+    if (m_map->isWalkable(m_player->getNextX() / TILE_SIZE,
+                          m_player->getNextY() / TILE_SIZE))
+    {
+      m_player->confirmMove();
+    }
 
     m_game_window->beginFrame();  // initiliaze render texture for drawing
     ClearBackground(LIGHTGRAY);

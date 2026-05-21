@@ -8,6 +8,8 @@ public:
   Player(const char* name);
 
   void update() override;
+  void setDirection(Direction dir);
+  void confirmMove();
 
 private:
 };

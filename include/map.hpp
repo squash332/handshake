@@ -6,7 +6,7 @@
 
 enum class TileType
 {
-  None, // needed to draw 2 things on 1 tile
+  None,  // needed to draw 2 things on 1 tile
   Desk,
   Phone,
   Pencil,
@@ -29,10 +29,10 @@ enum class TileType
 
 struct Tile
 {
-  TileType floor;
-  TileType object;
-  bool walkable;
-  bool interactable;
+  TileType floor = TileType::Parquet;
+  TileType object = TileType::None;
+  bool walkable = true;
+  bool interactable = false;
 };
 
 class Map
