@@ -5,7 +5,7 @@
 class Player : public Entity
 {
 public:
-  Player();
+  Player(const char* name);
 
   void update() override;
 
