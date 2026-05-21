@@ -9,7 +9,6 @@ Player::Player(const char* name)
 }
 
 void Player::update() {
-    if (next_x_ < 0 || next_y_ < 0 ||next_x_ > VIRTUAL_WIDTH || next_y_ > VIRTUAL_HEIGHT) return;
 
     next_x_ = x_;
     next_y_ = y_;
