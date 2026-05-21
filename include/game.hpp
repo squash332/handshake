@@ -8,6 +8,7 @@
 #include "map_renderer.hpp"
 #include "player.hpp"
 #include "../ui/include/window.hpp"
+#include "raylib.h"
 
 class Game
 {
@@ -16,9 +17,10 @@ public:
   void run();
 
 private:
+  Texture2D filip;
   std::unique_ptr<Window> m_game_window;
   std::unique_ptr<Player> m_player;
   std::unique_ptr<InputManager> m_input;
-  std::unique_ptr<MapRenderer> m_map_renderer;
   std::unique_ptr<Map> m_map;
+  std::unique_ptr<MapRenderer> m_map_renderer;
 };

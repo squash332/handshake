@@ -1,34 +1,53 @@
 #pragma once
 
 #include <vector>
+
 #include "constants.hpp"
 
 enum class TileType
 {
-    Floor,
-    Wall,
-    TopWall,
+  None, // needed to draw 2 things on 1 tile
+  Desk,
+  Phone,
+  Pencil,
+  Unknown,
+  CupOfPens,
+  Paper,
+  Parquet,
+  LightCarpet,
+  DoorTop,
+  Phone2,
+  Keyboard,
+  Mouse,
+  Monitor,
+  Extinguisher,
+  Board,
+  BathroomTile,
+  DarkCarpet,
+  DoorBottom
 };
 
 struct Tile
 {
-    TileType type;
-    bool walkable;
-    bool interactable;
+  TileType floor;
+  TileType object;
+  bool walkable;
+  bool interactable;
 };
 
 class Map
 {
 public:
-    Map() = default;
-    ~Map() = default;
-    bool isWalkable(int x, int y);
-    Tile getTile(int x, int y);
-    int getRows() const;
-    int getCols() const;
+  Map();
+  static Map createOffice();
+  ~Map() = default;
+  bool isWalkable(int x, int y);
+  int getRows() const;
+  int getCols() const;
+  Tile getTile(int x, int y) const;
 
 private:
-    std::vector<std::vector<Tile>> map_;
-    int cols_;
-    int rows_;
+  std::vector<std::vector<Tile>> map_;
+  int cols_;
+  int rows_;
 };
