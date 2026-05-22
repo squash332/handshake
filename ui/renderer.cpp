@@ -36,3 +36,27 @@ void Renderer::drawMap(const Map& map)
     }
   }
 }
+
+void Renderer::drawTextBox(const std::string& text) {
+    DrawRectangle(
+        TEXTBOX_PADDING, 
+        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
+        VIRTUAL_WIDTH - TEXTBOX_PADDING * 2, 
+        TEXTBOX_HEIGHT, 
+        BLACK
+    );
+    DrawRectangleLines(
+        TEXTBOX_PADDING,
+        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
+        VIRTUAL_WIDTH - TEXTBOX_PADDING * 2,
+        TEXTBOX_HEIGHT,
+        WHITE
+    );
+    DrawText(
+        text.c_str(),
+        TEXTBOX_PADDING * 2,
+        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT + TEXTBOX_TEXT_OFFSET - TEXTBOX_PADDING,
+        TEXTBOX_FONT_SIZE,
+        WHITE
+    );
+}

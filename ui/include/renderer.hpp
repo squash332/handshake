@@ -14,7 +14,7 @@ public:
   void drawMap(const Map& map);
   void drawPlayer(const Player& player);
 
-  
+  void drawTextBox(const std::string& text);
 
 private:
   Texture2D tileset_;

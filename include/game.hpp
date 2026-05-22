@@ -11,6 +11,15 @@
 #include "raylib.h"
 #include "renderer.hpp"
 
+enum class GameState
+{
+  MainMenu,
+  Playing,
+  Pause,
+  Dialogue,
+  Transition
+};
+
 class Game
 {
 public:
@@ -18,6 +27,7 @@ public:
   void run();
 
 private:
+  GameState m_state = GameState::Playing;
   Texture2D filip;
   std::unique_ptr<Window> m_game_window;
   std::unique_ptr<Player> m_player;

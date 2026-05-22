@@ -18,7 +18,7 @@ Game::Game()
 void Game::run()
 {
   while (!m_game_window->shouldClose()) {
-    m_input->update();  // our keybinds manager
+    m_input->update();
     m_player->update();
 
     if (m_map->isWalkable(m_player->getNextX() / TILE_SIZE,
@@ -27,11 +27,22 @@ void Game::run()
       m_player->confirmMove();
     }
 
-    m_game_window->beginFrame();  // initiliaze render texture for drawing
-    ClearBackground(LIGHTGRAY);
-    m_renderer->drawMap(*m_map);
-    m_renderer->drawPlayer(*m_player);
-
-    m_game_window->endFrame();  // end drawing
+    m_game_window->beginFrame();
+    ClearBackground(BLACK);
+    switch (m_state) {
+      case GameState::Playing:
+        m_renderer->drawMap(*m_map);
+        m_renderer->drawPlayer(*m_player);
+        break;
+      case GameState::Pause:
+        break;
+      case GameState::Dialogue:
+        break;
+      case GameState::MainMenu:
+      break;
+      case GameState::Transition: 
+      break;
+    }
+    m_game_window->endFrame();
   }
 }
