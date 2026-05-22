@@ -1,11 +1,17 @@
 #pragma once
 
 #include "common.hpp"
+#include "constants.hpp"
 #include "map.hpp"
-#include "window.hpp"
-#include "tile_defs.hpp"
 #include "player.hpp"
+#include "tile_defs.hpp"
+#include "window.hpp"
 
+enum class TextPosition {
+  MiddleScreen,
+  BottomMiddle,
+  DialogueBox
+};
 class Renderer
 {
 public:
@@ -14,6 +20,9 @@ public:
   void drawMap(const Map& map);
   void drawPlayer(const Player& player);
 
+  void drawText(const char* text, int charsShown,
+                TextPosition pos = TextPosition::MiddleScreen,
+                int fontSize = FONT_SIZE_MEDIUM);
   void drawTextBox(const std::string& text);
 
 private:

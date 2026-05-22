@@ -33,13 +33,15 @@ FetchContent_MakeAvailable(googletest)
 add_library(
     handshake_lib OBJECT
 
-    components/input/keybinds.cpp
     components/input/input_manager.cpp
+    components/input/text.cpp
+
     source/game.cpp
 
     components/entity.cpp
     components/player.cpp
     components/map.cpp
+    
     
     ui/window.cpp
     ui/renderer.cpp
@@ -59,7 +61,8 @@ target_compile_features(handshake_lib PUBLIC cxx_std_17)
 target_link_libraries(handshake_lib PUBLIC raylib)
 
 # ---- Declare executable ----
-add_executable(handshake_exe source/main.cpp)
+add_executable(handshake_exe source/main.cpp
+    include/text.hpp)
 add_executable(handshake::exe ALIAS handshake_exe)
 
 set_property(TARGET handshake_exe PROPERTY OUTPUT_NAME handshake)

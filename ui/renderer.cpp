@@ -17,8 +17,9 @@ Renderer::~Renderer()
   UnloadTexture(player_sprite_);
 }
 
-void Renderer::drawPlayer(const Player& player) {
-    DrawTexture(player_sprite_, player.getX(), player.getY(), RAYWHITE);
+void Renderer::drawPlayer(const Player& player)
+{
+  DrawTexture(player_sprite_, player.getX(), player.getY(), RAYWHITE);
 }
 
 void Renderer::drawMap(const Map& map)
@@ -37,26 +38,43 @@ void Renderer::drawMap(const Map& map)
   }
 }
 
-void Renderer::drawTextBox(const std::string& text) {
-    DrawRectangle(
-        TEXTBOX_PADDING, 
-        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
-        VIRTUAL_WIDTH - TEXTBOX_PADDING * 2, 
-        TEXTBOX_HEIGHT, 
-        BLACK
-    );
-    DrawRectangleLines(
-        TEXTBOX_PADDING,
-        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
-        VIRTUAL_WIDTH - TEXTBOX_PADDING * 2,
-        TEXTBOX_HEIGHT,
-        WHITE
-    );
-    DrawText(
-        text.c_str(),
-        TEXTBOX_PADDING * 2,
-        VIRTUAL_HEIGHT - TEXTBOX_HEIGHT + TEXTBOX_TEXT_OFFSET - TEXTBOX_PADDING,
-        TEXTBOX_FONT_SIZE,
-        WHITE
-    );
+void Renderer::drawText(const char* text, int charsShown, TextPosition pos, int fontSize) {
+    int textWidth = MeasureText(text, fontSize);
+    int posX = (VIRTUAL_WIDTH / 2) - (textWidth / 2);
+    int posY;
+
+    switch (pos) {
+        case TextPosition::MiddleScreen:
+            posY = TEXT_MIDDLE_Y - (fontSize / 2);
+            break;
+        case TextPosition::BottomMiddle:
+            posY = TEXT_BOTTOM_Y;
+            break;
+        case TextPosition::DialogueBox:
+            posX = TEXTBOX_PADDING * 2;
+            posY = TEXT_DIALOGUE_Y;
+            break;
+    }
+
+    DrawText(TextSubtext(text, 0, charsShown), posX, posY, fontSize, WHITE);
+}
+
+void Renderer::drawTextBox(const std::string& text)
+{
+  DrawRectangle(TEXTBOX_PADDING,
+                VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
+                VIRTUAL_WIDTH - TEXTBOX_PADDING * 2,
+                TEXTBOX_HEIGHT,
+                BLACK);
+  DrawRectangleLines(TEXTBOX_PADDING,
+                     VIRTUAL_HEIGHT - TEXTBOX_HEIGHT - TEXTBOX_PADDING,
+                     VIRTUAL_WIDTH - TEXTBOX_PADDING * 2,
+                     TEXTBOX_HEIGHT,
+                     WHITE);
+  DrawText(
+      text.c_str(),
+      TEXTBOX_PADDING * 2,
+      VIRTUAL_HEIGHT - TEXTBOX_HEIGHT + TEXTBOX_TEXT_OFFSET - TEXTBOX_PADDING,
+      TEXTBOX_FONT_SIZE,
+      WHITE);
 }
