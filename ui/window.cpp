@@ -1,5 +1,8 @@
-#include "window.hpp"
 #include <iostream>
+
+#include "window.hpp"
+
+#include "constants.hpp"
 
 Window::Window()
 {
@@ -43,23 +46,12 @@ bool Window::shouldClose()
 
 void Window::toggleFullscreen()
 {
-    if(fullscreen_) {
-        std::cout << "window is already fullscreen. returning" << std::endl;
-        return;
-    }
   ToggleFullscreen();
-  int monitor = GetCurrentMonitor();
-  SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
-  fullscreen_ = true;
-}
-
-void Window::toggleWindowed()
-{
-    if(!fullscreen_) {
-        std::cout << "window is already in native windowed mode. returning" << std::endl;
-        return;
-    }
+  if (!fullscreen_) {
+    int monitor = GetCurrentMonitor();
+    SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
+  } else {
     SetWindowSize(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
-    fullscreen_ = false;
-    
+  }
+  fullscreen_ = !fullscreen_;
 }
