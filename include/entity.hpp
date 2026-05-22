@@ -15,8 +15,9 @@ class Entity
 {
 public:
   Entity(float, float);
+  Entity(const Entity& other) = delete;
   virtual ~Entity() = default;
-
+  
   virtual void update() = 0;
 
   void setPosition(float, float);
