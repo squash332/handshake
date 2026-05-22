@@ -47,13 +47,7 @@ void Game::run()
         // calculate new state
         m_text->update();
         m_text_helper->update();
-
-        // render state
-        m_renderer->drawText(m_text->getText(), m_text->charsShown());
-        m_renderer->drawText(m_text_helper->getText(),
-                             m_text_helper->charsShown(),
-                             TextPosition::BottomMiddle,
-                             FONT_SIZE_SMALL);
+        m_renderer->drawMainMenu(m_text);
         // if (m_text->isDone()) {
         //   m_state = GameState::Playing;
         // }

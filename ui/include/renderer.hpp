@@ -17,15 +17,19 @@ class Renderer
 public:
   Renderer();
   ~Renderer();
+  void drawMainMenu();
   void drawMap(const Map& map);
   void drawPlayer(const Player& player);
+
 
   void drawText(const char* text, int charsShown,
                 TextPosition pos = TextPosition::MiddleScreen,
                 int fontSize = FONT_SIZE_MEDIUM);
   void drawTextBox(const std::string& text);
+  
 
 private:
   Texture2D tileset_;
   Texture2D player_sprite_;
+  Texture2D buttons_;
 };

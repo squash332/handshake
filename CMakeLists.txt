@@ -32,15 +32,13 @@ FetchContent_MakeAvailable(googletest)
 # ---- Declare library ----
 add_library(
     handshake_lib OBJECT
-
-    components/input/input_manager.cpp
-    components/input/text.cpp
-
+    
     source/game.cpp
-
-    components/entity.cpp
-    components/player.cpp
-    components/map.cpp
+    components/input/input_manager.cpp
+    components/text/text.cpp
+    components/entity/entity.cpp
+    components/entity/player.cpp
+    components/map/map.cpp
     
     
     ui/window.cpp

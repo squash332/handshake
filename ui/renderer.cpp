@@ -9,12 +9,14 @@ Renderer::Renderer()
 {
   tileset_ = LoadTexture("sprites/spritesheet.png");
   player_sprite_ = LoadTexture("sprites/ja.png");
+  buttons_ = LoadTexture("sprites/play_btn.png");
 }
 
 Renderer::~Renderer()
 {
   UnloadTexture(tileset_);
   UnloadTexture(player_sprite_);
+  UnloadTexture(buttons_);
 }
 
 void Renderer::drawPlayer(const Player& player)
@@ -38,25 +40,29 @@ void Renderer::drawMap(const Map& map)
   }
 }
 
-void Renderer::drawText(const char* text, int charsShown, TextPosition pos, int fontSize) {
-    int textWidth = MeasureText(text, fontSize);
-    int posX = (VIRTUAL_WIDTH / 2) - (textWidth / 2);
-    int posY;
+void Renderer::drawText(const char* text,
+                        int charsShown,
+                        TextPosition pos,
+                        int fontSize)
+{
+  int textWidth = MeasureText(text, fontSize);
+  int posX = (VIRTUAL_WIDTH / 2) - (textWidth / 2);
+  int posY;
 
-    switch (pos) {
-        case TextPosition::MiddleScreen:
-            posY = TEXT_MIDDLE_Y - (fontSize / 2);
-            break;
-        case TextPosition::BottomMiddle:
-            posY = TEXT_BOTTOM_Y;
-            break;
-        case TextPosition::DialogueBox:
-            posX = TEXTBOX_PADDING * 2;
-            posY = TEXT_DIALOGUE_Y;
-            break;
-    }
+  switch (pos) {
+    case TextPosition::MiddleScreen:
+      posY = TEXT_MIDDLE_Y - (fontSize / 2);
+      break;
+    case TextPosition::BottomMiddle:
+      posY = TEXT_BOTTOM_Y;
+      break;
+    case TextPosition::DialogueBox:
+      posX = TEXTBOX_PADDING * 2;
+      posY = TEXT_DIALOGUE_Y;
+      break;
+  }
 
-    DrawText(TextSubtext(text, 0, charsShown), posX, posY, fontSize, WHITE);
+  DrawText(TextSubtext(text, 0, charsShown), posX, posY, fontSize, WHITE);
 }
 
 void Renderer::drawTextBox(const std::string& text)
@@ -77,4 +83,14 @@ void Renderer::drawTextBox(const std::string& text)
       VIRTUAL_HEIGHT - TEXTBOX_HEIGHT + TEXTBOX_TEXT_OFFSET - TEXTBOX_PADDING,
       TEXTBOX_FONT_SIZE,
       WHITE);
+}
+
+void Renderer::drawMainMenu()
+{
+  // render state
+  m_renderer->drawText(getText(), charsShown());
+  m_renderer->drawText(m_text_helper->getText(),
+                       m_text_helper->charsShown(),
+                       TextPosition::BottomMiddle,
+                       FONT_SIZE_SMALL);
 }
