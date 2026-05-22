@@ -4,7 +4,7 @@
 
 class Text {
 public:
-    Text(const char* text, int speed = TEXT_SPEED_NORMAL, int fontSize = FONT_SIZE_MEDIUM);
+    Text(const char* text, int speed = TEXT_SPEED_SLOW, int fontSize = FONT_SIZE_MEDIUM);
     
     void update();
     void skip();

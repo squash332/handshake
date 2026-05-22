@@ -16,8 +16,9 @@ Game::Game()
   m_map = std::make_unique<Map>(Map::createOffice());
   m_renderer = std::make_unique<Renderer>();
   m_text = std::make_unique<Text>("Chapter-00");
-  m_text_helper = std::make_unique<Text>(
-      "press [space] to speed up dialogue", TEXT_SPEED_INSTANT, FONT_SIZE_SMALL);
+  m_text_helper = std::make_unique<Text>("press [space] to speed up dialogue",
+                                         TEXT_SPEED_INSTANT,
+                                         FONT_SIZE_SMALL);
 
   m_input->bind(KEY_F10, [this] { m_game_window->toggleFullscreen(); });
   m_input->bind(KEY_W, [this] { m_player->setDirection(Direction::Up); });
@@ -31,31 +32,30 @@ void Game::run()
 {
   while (!m_game_window->shouldClose()) {
     m_input->update();
-    m_player->update();
-
-    if (m_map->isWalkable(m_player->getNextX() / TILE_SIZE,
-                          m_player->getNextY() / TILE_SIZE))
-    {
-      m_player->confirmMove();
-    }
-
     m_game_window->beginFrame();
     ClearBackground(BLACK);
 
     switch (m_state) {
+
       case GameState::MainMenu:
         // calculate new state
         m_text->update();
         m_text_helper->update();
-        m_renderer->drawMainMenu(m_text);
-        // if (m_text->isDone()) {
-        //   m_state = GameState::Playing;
-        // }
+        m_renderer->drawMainMenu(*m_text, *m_text_helper);
         break;
+
       case GameState::Playing:
+        m_player->update();
         m_renderer->drawMap(*m_map);
+
+        if (m_map->isWalkable(m_player->getNextX() / TILE_SIZE,
+                              m_player->getNextY() / TILE_SIZE))
+        {
+          m_player->confirmMove();
+        }
         m_renderer->drawPlayer(*m_player);
         break;
+        
       default:
         break;
     }

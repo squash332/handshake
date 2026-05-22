@@ -6,6 +6,7 @@
 #include "player.hpp"
 #include "tile_defs.hpp"
 #include "window.hpp"
+#include "text.hpp"
 
 enum class TextPosition {
   MiddleScreen,
@@ -17,7 +18,7 @@ class Renderer
 public:
   Renderer();
   ~Renderer();
-  void drawMainMenu();
+  void drawMainMenu(const Text& text, const Text& text_helper);
   void drawMap(const Map& map);
   void drawPlayer(const Player& player);
 

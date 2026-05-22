@@ -85,12 +85,12 @@ void Renderer::drawTextBox(const std::string& text)
       WHITE);
 }
 
-void Renderer::drawMainMenu()
+void Renderer::drawMainMenu(const Text& text,const Text& text_helper)
 {
   // render state
-  m_renderer->drawText(getText(), charsShown());
-  m_renderer->drawText(m_text_helper->getText(),
-                       m_text_helper->charsShown(),
+  drawText(text.getText(), text.charsShown());
+  drawText(text_helper.getText(),
+                       text_helper.charsShown(),
                        TextPosition::BottomMiddle,
                        FONT_SIZE_SMALL);
 }
