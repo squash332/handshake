@@ -28,6 +28,8 @@ public:
   Game();
   void run();
   void skipDialogue();
+  bool closeWindow();
+
 
 private:
   GameState m_state = GameState::MainMenu;

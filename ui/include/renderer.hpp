@@ -4,30 +4,37 @@
 #include "constants.hpp"
 #include "map.hpp"
 #include "player.hpp"
+#include "text.hpp"
 #include "tile_defs.hpp"
 #include "window.hpp"
-#include "text.hpp"
 
-enum class TextPosition {
-  MiddleScreen,
+enum class TextPosition
+{
+  TopMiddle,
+  Middle,
   BottomMiddle,
   DialogueBox
 };
+
 class Renderer
 {
 public:
   Renderer();
   ~Renderer();
   void drawMainMenu(const Text& text, const Text& text_helper);
+  void drawTransition(const Text& text, const Text& text_helper);
+
   void drawMap(const Map& map);
   void drawPlayer(const Player& player);
 
-
-  void drawText(const char* text, int charsShown,
-                TextPosition pos = TextPosition::MiddleScreen,
+  void drawText(const char* text,
+                int charsShown,
+                TextPosition pos = TextPosition::Middle,
                 int fontSize = FONT_SIZE_MEDIUM);
   void drawTextBox(const std::string& text);
-  
+
+  bool isPlayClicked(Vector2 mousePos, bool mousePressed);
+  bool isExitClicked(Vector2 mousePos, bool mousePressed);
 
 private:
   Texture2D tileset_;

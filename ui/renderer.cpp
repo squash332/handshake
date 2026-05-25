@@ -50,7 +50,10 @@ void Renderer::drawText(const char* text,
   int posY;
 
   switch (pos) {
-    case TextPosition::MiddleScreen:
+    case TextPosition::TopMiddle:
+      posY = TEXT_TOP_MIDDLE_Y;
+      break;
+    case TextPosition::Middle:
       posY = TEXT_MIDDLE_Y - (fontSize / 2);
       break;
     case TextPosition::BottomMiddle:
@@ -85,12 +88,48 @@ void Renderer::drawTextBox(const std::string& text)
       WHITE);
 }
 
-void Renderer::drawMainMenu(const Text& text,const Text& text_helper)
+void Renderer::drawMainMenu(const Text& text, const Text& text_helper)
 {
   // render state
-  drawText(text.getText(), text.charsShown());
+  drawText(text.getText(), text.charsShown(), TextPosition::TopMiddle);
   drawText(text_helper.getText(),
-                       text_helper.charsShown(),
-                       TextPosition::BottomMiddle,
-                       FONT_SIZE_SMALL);
+           text_helper.charsShown(),
+           TextPosition::BottomMiddle,
+           FONT_SIZE_SMALL);
+  DrawTexture(buttons_,
+              (VIRTUAL_WIDTH / 2) - BUTTON_WIDTH / 2,
+              (VIRTUAL_HEIGHT / 2) - BUTTON_HEIGHT / 2,
+              RAYWHITE);
+}
+
+bool Renderer::isPlayClicked(Vector2 mousePos, bool mousePressed)
+{
+  float btnX = ((float)VIRTUAL_WIDTH / 2) - (float)BUTTON_WIDTH / 2;
+  float btnY = ((float)VIRTUAL_HEIGHT / 2) - (float)BUTTON_HEIGHT / 2;
+  Rectangle playRec = {btnX, btnY, BUTTON_WIDTH, (float)BUTTON_HEIGHT / 2};
+  return mousePressed && CheckCollisionPointRec(mousePos, playRec);
+}
+
+bool Renderer::isExitClicked(Vector2 mousePos, bool mousePressed)
+{
+  float btnX = ((float)VIRTUAL_WIDTH / 2) - (float)BUTTON_WIDTH / 2;
+  float btnY = ((float)VIRTUAL_HEIGHT / 2) - (float)BUTTON_HEIGHT / 2;
+  Rectangle exitRec = {btnX,
+                       btnY + (float)BUTTON_HEIGHT / 2,
+                       BUTTON_WIDTH,
+                       (float)BUTTON_HEIGHT / 2};
+  return mousePressed && CheckCollisionPointRec(mousePos, exitRec);
+}
+
+void Renderer::drawTransition(const Text& text, const Text& text_helper)
+{
+  drawText(text.getText(),
+           text.charsShown(),
+           TextPosition::Middle,
+           text.getFontSize());
+
+  drawText(text_helper.getText(),
+           text_helper.charsShown(),
+           TextPosition::BottomMiddle,
+           FONT_SIZE_SMALL);
 }

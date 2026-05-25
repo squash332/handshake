@@ -27,6 +27,11 @@ enum class TileType
   DoorBottom
 };
 
+enum class Buttons {
+    PLAY,
+    EXIT
+};
+
 struct Tile
 {
   TileType floor = TileType::Parquet;
