@@ -17,7 +17,7 @@ Game::Game()
   m_input = std::make_unique<InputManager>();
   m_game_window = std::make_unique<Window>();
   m_player = std::make_unique<Player>("filip");
-  m_map = std::make_unique<Map>(Map::createOffice());
+  m_map = std::make_unique<Map>(Map::loadFromFile("sprites/interview_room.tmj"));
   m_renderer = std::make_unique<Renderer>();
   m_text = std::make_unique<Text>(main_menu, TEXT_SPEED_SLOW, FONT_SIZE_BIG);
   m_text_helper = std::make_unique<Text>(

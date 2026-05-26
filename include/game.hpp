@@ -32,7 +32,7 @@ public:
 
 
 private:
-  GameState m_state = GameState::MainMenu;
+  GameState m_state = GameState::Playing;
   Texture2D filip;
 
   std::unique_ptr<Window> m_game_window;

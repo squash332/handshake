@@ -1,0 +1,48 @@
+{ "compressionlevel":-1,
+ "height":8,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[17, 17, 18, 17, 17, 17, 17, 18, 17, 17,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+            8, 8, 8, 8, 8, 8, 8, 8, 18, 9,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+            16, 16, 16, 16, 16, 16, 16, 16, 16, 16],
+         "height":8,
+         "id":1,
+         "name":"ground\/walls",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":9,
+ "nextobjectid":23,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.12.1",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "columns":9,
+         "firstgid":1,
+         "image":"spritesheet.png",
+         "imageheight":128,
+         "imagewidth":288,
+         "margin":0,
+         "name":"office stuff",
+         "spacing":0,
+         "tilecount":36,
+         "tileheight":32,
+         "tilewidth":32
+        }],
+ "tilewidth":32,
+ "type":"map",
+ "version":"1.10",
+ "width":10
+}
