@@ -2,10 +2,10 @@
 
 #include "raylib.h"
 #define CUTE_TILED_IMPLEMENTATION
+#include "cute_tiled.h"
 #include <cstddef>
 
 #include "constants.hpp"
-#include "cute_tiled.h"
 #include "map.hpp"
 
 Map::Map()
